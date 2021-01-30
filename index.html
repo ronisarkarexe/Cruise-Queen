@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+       <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <main id="booking-area">
+        <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <section class="main-content container">
+
+        <div class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class (<span id="firstClassTrickedPrice">$150</span>)</label>
+                    <input id="firstClassTrickedCount" type="number" class="form-control text-center inp-width" value="1">
+                </div>
+                <div class="plus-minus-btn">
+                    <button onclick="handelTrickedCount('firstClass',true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="handelTrickedCount('firstClass',false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy (<span id="economyClassTrickedPrize">$100</span>)</label>
+                    <input id="economyTrickedCount" type="number" class="form-control text-center inp-width" value="1">
+                </div>
+                <div class="plus-minus-btn">
+                    <button onclick="handelTrickedCount('economy',true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="handelTrickedCount('economy',false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subTotalCost">$250</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="totalTex">$25</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="totalAmount">$275</p>
+                    </div>
+                </div>
+            </div>
+            <button id="clickBookNow" class="btn-style">Book Now</button>
+        </div>
+    </section>
+   </main>
+
+   <!-- Here another confirmation section-->
+    <section id="transaction-area">
+        <div class="confram-div">
+            <div class="confirm-header">
+                <h1>CONGRATULATION</h1>
+                <h2>Your order has been placed successfully.</h2>
+            </div>
+            <div>
+                <h1 class="booked-tricket">Booked Ticket Details</h1>
+            </div>
+            <div class="confermation">
+                <h1>Best wishes to your tour of Dhaka, Bangladesh to New York, United States.</h1>
+                <div id="receiptConferm" class="calculations">
+                    <div class="amount">
+                        <div class="left">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="right">
+                            <p>$250</p>
+                        </div>
+                    </div>
+    
+                    <div class="amount">
+                        <div class="left">
+                            <p>Charge 10% VAT</p>
+                        </div>
+                        <div class="right">
+                            <p>$25</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="amount">
+                        <div class="left">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="right">
+                            <p>$275</p>
+                        </div>
+                    </div>
+                    <button id="clickAnotherBookNow" class="btn-style marginbtn">Book Another one</button>
+                </div>
+                <h3 style="text-align:center;margin-top:30px;color:aliceblue;" >Have a safe Journey</h3>
+            </div>
+            <footer>©Roni Sarkar</footer>
+        </div>
+    </section>
+    <script>
+
+        // first class tricked of cruise queen
+        function handelTrickedCount(trickedInput,isIncrease){
+            const TrickedInput = document.getElementById(trickedInput + "TrickedCount");
+            const TrickedCount = parseInt(TrickedInput.value);
+            let trickedInputNumber = TrickedCount;
+            if(isIncrease == true){
+                trickedInputNumber = TrickedCount + 1;
+            }
+            else if(isIncrease == false && TrickedCount > 0){
+                trickedInputNumber = TrickedCount - 1;
+            }
+            TrickedInput.value = trickedInputNumber;
+            let trickedPrize = trickedInputNumber;
+            if(trickedInput == 'firstClass'){
+                trickedPrize = trickedInputNumber * 150;
+            }
+            else if(trickedInput == 'economy'){
+                trickedPrize = trickedInputNumber * 100;
+            }
+            totalCost()
+        }
+
+        // TotalCost of tricked
+        function totalCost() {
+            const totalClassTrickedInput = document.getElementById("firstClassTrickedCount");
+            const totalClassTrickedCount = parseInt(totalClassTrickedInput.value);
+
+            const totalTrickedInput = document.getElementById("economyTrickedCount");
+            const totalTrickedOutput = parseInt(totalTrickedInput.value);
+
+            const totalCostOfTricked = (totalClassTrickedCount * 150) + (totalTrickedOutput * 100);
+            document.getElementById("subTotalCost").innerText = '$' + totalCostOfTricked;
+
+            const totalTex = (totalCostOfTricked * 0.1)
+            document.getElementById("totalTex").innerText = '$' + totalTex;
+
+            const totalAmount = totalCostOfTricked + totalTex;
+            document.getElementById("totalAmount").innerText = '$' + totalAmount;
+        }
+
+        // Click book for confirm tricked
+        const clickBookNow = document.getElementById("clickBookNow")
+            clickBookNow.addEventListener("click",function() {
+            const click = document.getElementById("booking-area");
+            click.style.display = "none";
+            const transactionArea = document.getElementById("transaction-area");
+            transactionArea.style.display = "block";
+
+        })
+
+        // Click another book buttom for more tricked
+        const clickAnotherBookNow = document.getElementById("clickAnotherBookNow")
+            clickAnotherBookNow.addEventListener("click",function() {
+            const click = document.getElementById("transaction-area");
+            click.style.display = "none";
+            const transactionArea = document.getElementById("booking-area");
+            transactionArea.style.display = "block";
+        })
+
+    </script>
+    <!--Thank You-->
+</body>
+
+</html>
